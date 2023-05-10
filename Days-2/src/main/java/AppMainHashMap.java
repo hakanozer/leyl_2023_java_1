@@ -2,6 +2,7 @@ import props.Address;
 import utils.EMap;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -65,8 +66,18 @@ public class AppMainHashMap {
 
         // Enum Single
         System.out.println( hmx.get( EMap.email ) );
-
         System.out.println( hmx );
+
+        // Linked HashMap -> sıralama algoritmasının eklediğimiz sıraya göre çalışmasını sağlamak
+        System.out.println("=====================");
+        Map<EMap, Object> hmy = new LinkedHashMap<>();
+        hmy.put(EMap.name, "Serkan");
+        hmy.put(EMap.surname, "Bilirler");
+        hmy.put(EMap.email, "serkan@mail.com");
+        hmy.put(EMap.age, 23);
+        hmy.put(EMap.status, true);
+        hmy.put(EMap.address, address);
+        System.out.println( hmy );
 
     }
 }
