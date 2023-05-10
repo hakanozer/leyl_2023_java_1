@@ -64,6 +64,7 @@ public class AppMainList {
         while (iterator.hasNext()) {
             System.out.println( iterator.next() );
         }
+        ls.add("İstanbul");
 
         //ls.clear();
         Collections.sort(ls);
