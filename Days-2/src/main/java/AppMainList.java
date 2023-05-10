@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class AppMainList {
@@ -47,9 +49,25 @@ public class AppMainList {
         System.out.println("indexStatus : " + indexStatus);
 
         // remove
-        ls.remove("Hatay");
-        ls.remove(0);
+        // ls.remove("Hatay");
+        // ls.remove(0);
 
+
+        // iterator
+        System.out.println("============ iterator - 1");
+        Iterator<String> iterator = ls.iterator();
+        while (iterator.hasNext()) {
+            System.out.println( iterator.next() );
+        }
+
+        System.out.println("============ iterator - 2");
+        while (iterator.hasNext()) {
+            System.out.println( iterator.next() );
+        }
+
+        //ls.clear();
+        Collections.sort(ls);
+        Collections.reverse(ls);
 
         System.out.println(ls);
 
