@@ -25,12 +25,19 @@ public class UseFile {
 
 
     public void fileWrite( String data ) {
+        FileWriter writer = null;
         try {
-            FileWriter writer = new FileWriter(file, true);
+            writer = new FileWriter(file, true);
             writer.append(data + System.lineSeparator() );
-            writer.close();
         }catch (Exception ex) {
             System.err.println("fileWrite Error : " + ex);
+        }finally {
+            try {
+                if ( writer != null )
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
