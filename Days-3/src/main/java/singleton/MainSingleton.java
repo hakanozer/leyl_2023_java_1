@@ -5,6 +5,7 @@ import java.sql.Connection;
 public class MainSingleton {
     public static void main(String[] args) {
 
+        // Singleton Thread 
         Runnable rn1 = () -> {
             DB db1 = DBSingle.getInstance();
             System.out.println(db1.hashCode());
