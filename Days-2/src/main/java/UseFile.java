@@ -1,13 +1,19 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class UseFile {
 
     private String fileName = "";
     private File file = null;
     public UseFile( String fileName ) {
-        this.fileName = fileName + ".txt";
+        this.fileName = fileName + ".jpg";
         file = new File(this.fileName);
     }
 
@@ -50,5 +56,28 @@ public class UseFile {
             System.err.println("deleteFile Error : " + ex);
         }
     }
+
+    public void fileRead() throws IOException {
+        Scanner scanner = new Scanner(file);
+        while ( scanner.hasNext() ) {
+            String line = scanner.nextLine();
+            System.out.println(line);
+        }
+        scanner.close();
+    }
+
+    public void newFileRead() throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(file);
+        FileChannel fileChannel = fileInputStream.getChannel();
+        long size = fileChannel.size();
+        ByteBuffer byteBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, size);
+        CharBuffer charBuffer = StandardCharsets.ISO_8859_1.decode(byteBuffer);
+        Scanner scanner = new Scanner(charBuffer.toString());
+        while(scanner.hasNext() ) {
+            String line =  scanner.nextLine();
+            System.out.println( "Line: " + line );
+        }
+    }
+
 
 }
